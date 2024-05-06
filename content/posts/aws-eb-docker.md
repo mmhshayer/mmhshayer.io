@@ -1,6 +1,6 @@
 ---
 author: "Mohammad Mustakim Hassan"
-title: "Deploying a Dockerized applciation on AWS Elastic Beanstalk"
+title: "Deploying a Dockerized application on AWS Elastic Beanstalk"
 date: "2023-08-28"
 description: " A Comprehensive Guide to Deploying a Docker Project on AWS Elastic Beanstalk"
 tags: ["AWS", "Elastic beanstalk", "Cloud Computing", "Docker", "DevOps", "Deployment"]
@@ -14,7 +14,7 @@ In the rapidly evolving landscape of cloud computing, deploying and managing app
 
 ### Step 1: Prepare Your Docker Application
 
-Before you embark on the journey of deploying your Docker application, make sure you have a Dockerized version of your application ready. This involves creating a `Dockerfile` that specifies the necessary configurations to build a Docker image of your application.
+Before you embark on the journey of deploying your Docker application, make sure you have a containerized version of your application ready. This involves creating a `Dockerfile` that specifies the necessary configurations to build a Docker image of your application.
 
 ### Step 2: Sign in to AWS Console
 

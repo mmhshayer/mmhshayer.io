@@ -1,10 +1,11 @@
 ---
-author: "Mohammad Mustakim Hasan"
+author: "Mohammad Mustakim Hassan"
 title: "React & Next.js: Building Powerful Web Applications"
 date: "2023-08-28"
 description: "Revolutionizing modern web application development."
-tags: ["frontend", "web", "react", "nextjs"]
+tags: ["technology", "frontend", "react", "nextjs"]
 ShowToc: true
+draft: true
 ---
 In the dynamic landscape of web development, staying ahead of the curve is crucial. Two standout players in this domain, React and Next.js, are changing the game for developers worldwide. In this post, we'll highlight the key advantages of these technologies and how they revolutionize the way we build web applications.
 
@@ -16,7 +17,7 @@ In the dynamic landscape of web development, staying ahead of the curve is cruci
 
 **Efficient Rendering**: React's Virtual DOM optimizes rendering, resulting in efficient updates and minimizing the need for direct DOM manipulation.
 
-**Flexibility and Integration**: React's unopinionated approach allows integration with various tools, frameworks, and libraries, offering developers unparalleled flexibility.
+**Flexibility and Integration**: React's un-opinioned approach allows integration with various tools, frameworks, and libraries, offering developers unparalleled flexibility.
 
 ## **Next.js: Unleashing Enhanced Development**
 

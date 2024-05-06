@@ -3,7 +3,7 @@ author: "Mohammad Mustakim Hassan"
 title: "Deploying a JAMstack Blog with Hugo, PaperMod, GitHub Actions, and GitHub Pages"
 date: "2023-08-28"
 description: "Learn how to deploy a JAMstack blog using Hugo, PaperMod theme, GitHub Actions, and GitHub Pages."
-tags: ["frontend", "web", "Hugo", "PaperMod", "JAMstack", "GitHub Actions", "GitHub Pages"]
+tags: ["frontend","Hugo", "GitHub Actions", "GitHub Pages"]
 ShowToc: true
 ---
 ## Introduction
@@ -39,7 +39,7 @@ cd <name-of-site>
 
 It is a good practice to create a new branch for each new feature you add to your project.
 
-### A branch for development, version controll
+### A branch for development, version control
 
 create a new branch called `dev` and switch to it:
 
@@ -55,7 +55,7 @@ create new branch called `gh-pages`:
 git branch gh-pages
 ```
 
-### A branch for writing and drfting posts
+### A branch for writing and drafting posts
 
 create a new branch called `posts`:
 
@@ -63,12 +63,12 @@ create a new branch called `posts`:
 git branch posts
 ```
 
-> Dont forget to publish the branch to the remote repository
+> Don't forget to publish the branch to the remote repository
 ---
 
 ## Managing Themes
 
-Insted of developing a theme from scratch, the easiest way to get started is to use an existing theme. I will use [PaperMod](https://github.com/adityatelange/hugo-PaperMod) as the theme for this project.
+Instead of developing a theme from scratch, the easiest way to get started is to use an existing theme. I will use [PaperMod](https://github.com/adityatelange/hugo-PaperMod) as the theme for this project.
 > Inside the folder of your Hugo site, run:
 
 ### Adding a theme as a submodule
@@ -77,7 +77,7 @@ Insted of developing a theme from scratch, the easiest way to get started is to 
 git submodule add --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 ```
 
-### Recloning the repo
+### Re-cloning the repo
 
 when you clone the repo, you will see that the theme folder is empty. To get the theme files, you need to run the following command:
 
@@ -95,7 +95,7 @@ git submodule update --remote --merge
 
 ### Configure the Theme
 
-You can follow the official guiide to configure the theme. [PaperMod](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation##sample-configyml)
+You can follow the official guide to configure the theme. [PaperMod](https://github.com/adityatelange/hugo-PaperMod/wiki/Installation##sample-configyml)
 
 > To configure the theme, you need to add the following lines to the `config.yml` file:
 
@@ -105,7 +105,7 @@ theme: PaperMod
 
 ### Run development server
 
-While in development, you will be able to see all draft posts alse:
+While in development, you will be able to see all draft posts also:
 
 ```bash
 hugo server -D
@@ -115,7 +115,7 @@ hugo server -D
 
 ## Automating with GitHub Actions
 
-This workflow sets up Hugo, builds your site, and deploys it to the ghpages branch.
+This workflow sets up Hugo, builds your site, and deploys it to the gh-pages branch.
 
 ### Create a GitHub Actions Workflow
 
@@ -196,7 +196,7 @@ ShowToc: true
 ---
 ```
 
-Add content bolow the metadata section:
+Add content below the metadata section:
 
 ```bash
 # Introduction
@@ -225,7 +225,7 @@ git push origin posts
 
 ### Await Deployment
 >
-> await the deployment ot fisnish. you can see the progess in "Actions" tab of your repo.
+> await the deployment ot finish. you can see the progress in "Actions" tab of your repo.
 
 ### View the Deployed Site
 >

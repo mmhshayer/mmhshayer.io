@@ -1,10 +1,11 @@
 ---
-author: "Mohammad Mustakim Hasan"
+author: "Mohammad Mustakim Hassan"
 title: "Vue & Nuxt.js: Advancing Web Development with Key Benefits"
 date: "2023-08-28"
 description: "Intuitive UIs and efficient web development"
-tags: ["frontend", "web", "vue", "nuxtjs"]
+tags: ["technology", "frontend", "vue", "nuxtjs"]
 ShowToc: true
+draft: true
 ---
 In the ever-evolving world of web development, staying at the forefront is essential. Vue.js and its extension, Nuxt.js, are two dynamic technologies that are reshaping the web development landscape. In this article, we'll uncover the significant advantages of Vue and Nuxt.js and explore how they're revolutionizing the process of crafting exceptional web applications.
 
@@ -14,7 +15,7 @@ In the ever-evolving world of web development, staying at the forefront is essen
 
 **Reactive Data Binding**: Vue's reactivity system ensures that any changes to the data are automatically reflected in the UI, simplifying development and enhancing user interaction.
 
-**Component-Based Approach**: Vue's component-driven architecture promotes reusability and modularity, resulting in organized, maintainable codebases.
+**Component-Based Approach**: Vue's component-driven architecture promotes reusability and modularity, resulting in organized, maintainable codebase.
 
 **Directives and Templates**: Vue's intuitive directives and templating make it easy to bind data to the DOM and apply logic for dynamic content rendering.
 

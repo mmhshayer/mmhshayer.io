@@ -3,8 +3,9 @@ author: "Mohammad Mustakim Hassan"
 title: "HTML"
 date: "2023-05-15"
 description: "A brief description of HTML"
-tags: ["frontend", "web", "html"]
+tags: ["technology", "html"]
 ShowToc: true
+draft: true
 ---
 If you've ever visited a website, chances are you've encountered HTML, the foundational language used to build web pages. It is essential for anyone looking to create web pages, web applications, or other digital experiences. It provides a way to structure content on a web page, define how it should be displayed, and create engaging and interactive experiences for users.
 
@@ -66,7 +67,7 @@ HTML5 was designed to be more powerful and flexible than previous versions of th
    - `</body>`: The closing tag for the body section.
 3. `</html>`: The closing tag for an HTML document.
 
-## Conclution
+## Conclusion
 
 HTML is a fundamental language for creating web pages and applications. By learning HTML, you have gained the ability to structure and organize content on a web page, create headings, paragraphs, and other types of elements, and control the appearance of the page through styling and formatting.
 
