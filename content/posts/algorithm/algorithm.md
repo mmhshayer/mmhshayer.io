@@ -1,11 +1,10 @@
 ---
 author: "Mohammad Mustakim Hassan"
 title: "Demystifying Algorithms: A Comprehensive Guide"
-date: "2023-05-06"
+date: "2023-01-22"
 description: "Explore the fundamentals of algorithms and their significance in computer science"
 tags: ["algorithm"]
 ShowToc: true
-draft: true
 ---
 
 ## Introduction

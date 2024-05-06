@@ -1,11 +1,10 @@
 ---
 author: "Mohammad Mustakim Hassan"
 title: "Understanding Data Structures: A Comprehensive Guide"
-date: "2023-05-06"
+date: "2023-01-22"
 description: "Explore the fundamentals of data structures and their applications"
 tags: ["data structure"]
 ShowToc: true
-draft: true
 ---
 
 ## Introduction

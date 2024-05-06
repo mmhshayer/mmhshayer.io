@@ -1,7 +1,7 @@
 ---
 author: "Mohammad Mustakim Hassan"
 title: "Insertion Sort"
-date: "2023-05-06"
+date: "2023-03-06"
 description: "Notes on Insertion Sort"
 tags: ["algorithm", "sort"]
 ShowToc: true

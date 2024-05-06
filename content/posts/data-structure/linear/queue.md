@@ -1,11 +1,10 @@
 ---
 author: "Mohammad Mustakim Hassan"
 title: "Queue Data Structure"
-date: "2023-05-06"
+date: "2023-02-14"
 description: "Notes on Queue Data Structure"
 tags: ["data structure", "queue"]
 ShowToc: true
-draft: true
 ---
 
 ## Introduction

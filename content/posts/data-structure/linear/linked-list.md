@@ -1,11 +1,10 @@
 ---
 author: "Mohammad Mustakim Hassan"
 title: "Linked List Data Structure"
-date: "2023-05-06"
+date: "2023-02-14"
 description: "Notes on Linked List Data Structure"
 tags: ["data structure", "linked list"]
 ShowToc: true
-draft: true
 ---
 
 ## Introduction

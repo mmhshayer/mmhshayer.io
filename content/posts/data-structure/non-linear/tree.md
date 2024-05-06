@@ -1,11 +1,10 @@
 ---
 author: "Mohammad Mustakim Hassan"
 title: "Tree Data Structure"
-date: "2023-05-06"
+date: "2023-02-14"
 description: "Notes on Tree Data Structure"
 tags: ["data structure", "tree"]
 ShowToc: true
-draft: true
 ---
 
 ## Introduction
