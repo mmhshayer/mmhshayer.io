@@ -1,7 +1,7 @@
 ---
 author: "Mohammad Mustakim Hassan"
 title: "Binary Search"
-date: "2023-03-06"
+date: "2023-05-01"
 description: "Notes on Binary search"
 tags: ["algorithm", "search", "graph"]
 ShowToc: true

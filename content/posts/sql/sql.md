@@ -1,6 +1,6 @@
 ---
 author: "Mohammad Mustakim Hassan"
-title: "SQL Fundamentals: A Beginner's Guide"
+title: "SQL"
 date: "2023-01-22"
 description: "Explore the basics of SQL and learn how to interact with relational databases"
 tags: ["SQL", "database", "relational database", "SQL queries"]

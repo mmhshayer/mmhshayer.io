@@ -142,10 +142,10 @@ menu:
       name: archive
       url: /archives/
       weight: 20
-#     - identifier: categories
-#       name: categories
-#       url: /categories/
-#       weight: 30
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 30
     - identifier: tags
       name: tags
       url: /tags/
