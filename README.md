@@ -9,6 +9,30 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
+
+# How to update the theme
+
+add upstream to the source then pull the updates.
+```
+git remote add upstream https://github.com/timlrx/tailwind-nextjs-starter-blog.git
+git fetch upstream
+
+# assuming the tempate is in 'next' branch
+git checkout next
+git rebase upstream/main
+
+# if conflict
+git add <resolved-files>
+git rebase --continue
+
+# abort
+git rebase --abort
+
+# push to origin
+git push origin next // --force
+
+```
+
 This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) blogging starter template. Version 2 is based on Next App directory with [React Server Component](https://nextjs.org/docs/getting-started/react-essentials#server-components) and uses [Contentlayer](https://www.contentlayer.dev/) to manage markdown content.
 
 Probably the most feature-rich Next.js markdown blogging template out there. Easily configurable and customizable. Perfect as a replacement to existing Jekyll and Hugo individual blogs.
