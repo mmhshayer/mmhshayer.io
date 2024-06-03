@@ -1,195 +1,208 @@
 ---
-author: "Mohammad Mustakim Hassan"
 title: "Dockerizing compose Nx"
 date: "2023-08-28"
-description: "Turbocharge Your Full-Stack Projects: Dockerizing Next.js, Nest.js, Redis and MongoDB with Nx Monorepo and Docker Compose"
+summary: "Turbocharge Your Full-Stack Projects: Dockerizing Next.js, Nest.js, Redis and MongoDB with Nx Monorepo and Docker Compose"
 tags: ["Docker", "Nx monorepo", "NextJs", "NestJs", "redis", "MongoDb"]
-ShowToc: true
 draft: true
 ---
 
-Discover how to leverage Docker to streamline the development workflow of your applications.Suppose you have an application that has 2 frontend and one backend. It uses a redis database and a mongo database. You want to Dockerize it for ease of development and deployment. In that case, this blog post is for you.
+Discover how to leverage Docker to streamline the development workflow of your applications. Suppose you have an application that has 2 frontends and one backend. It uses a Redis database and a MongoDB database. You want to Dockerize it for ease of development and deployment. In that case, this blog post is for you.
 
 ## Preparation
 
-1.Install Nx CLI
+1. Install Nx CLI
 
-```bash
-npm install -g nx
-```
+    ```bash
+    npm install -g nx
+    ```
 
-2.Create a new workspace
+2. Create a new workspace
 
-```bash
-npx create-nx-workspace@latest
-```
+    ```bash
+    npx create-nx-workspace@latest
+    ```
 
-> Go through the prompts and select a **node** application with **NestJS** as the backend framework and name it **backend**.
+    > Go through the prompts and select a **node** application with **NestJS** as the backend framework and name it **backend**.
 
-3.Install and then create a NextJS **frontend**, **admin** application
+3. Install and then create a NextJS **frontend**, **admin** application
 
-```bash
-cd <project-name>
-npm install --save-dev @nx/next
-nx g  @nx/next:app frontend
-nx g  @nx/next:app admin
-```
+    ```bash
+    cd <project-name>
+    npm install --save-dev @nx/next
+    nx g @nx/next:app frontend
+    nx g @nx/next:app admin
+    ```
 
-> Go through the prompts and select appropriate configuration, we are going for minimal with **CSS**, **no E2E test** and a **APP Router**
+    > Go through the prompts and select appropriate configuration, we are going for minimal with **CSS**, **no E2E test** and an **APP Router**.
 
-4.Add redis and mongo database to the backend application
+4. Add Redis and MongoDB databases to the backend application
 
-```bash
-npm install @nestjs/mongoose mongoose @nestjs/cache-manager cache-manager cache-manager-redis-store@2
+    ```bash
+    npm install @nestjs/mongoose mongoose @nestjs/cache-manager cache-manager cache-manager-redis-store@2
+    npm install --save-dev @types/cache-manager-redis-store
+    ```
 
-npm install --save-dev @types/cache-manager-redis-store
-```
+5. Implement Redis and MongoDB in the backend application
 
-5.Implement redis and mongo database in the backend application
+    ```typescript
+    import { Module } from '@nestjs/common';
+    import { AppController } from './app.controller';
+    import { AppService } from './app.service';
+    import { MongooseModule } from '@nestjs/mongoose';
+    import { CacheModule } from '@nestjs/cache-manager';
+    import * as redisStore from 'cache-manager-redis-store';
 
-```typescript
-import { Module } from '@nestjs/common';
+    @Module({
+      imports: [
+        MongooseModule.forRoot('mongodb://localhost:27017/mydatabase'),
+        CacheModule.register({
+          isGlobal: true,
+          store: redisStore,
+          host: 'localhost',
+          port: 6379,
+        }),
+      ],
+      controllers: [AppController],
+      providers: [AppService],
+    })
+    export class AppModule {}
+    ```
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
-import { CacheModule } from '@nestjs/cache-manager';
-import * as redisStore from 'cache-manager-redis-store';
+6. Initialize git repository and make the initial commit
 
-@Module({
-  imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/mydatabase'),
-    CacheModule.register({
-      isGlobal: true,
-      store: redisStore,
-      host: 'localhost',
-      port: 6379,
-    }),
-  ],
-  controllers: [AppController],
-  providers: [AppService],
-})
-export class AppModule {}
-
-```
-
-6.Initialize git repository and make initial commit
-
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "eexample@email.com"
-git init
-git add .
-git commit -m "Initial commit"
-```
+    ```bash
+    git config --global user.name "Your Name"
+    git config --global user.email "example@email.com"
+    git init
+    git add .
+    git commit -m "Initial commit"
+    ```
 
 ## Dockerizing the NestJS Applications
 
-1.Create a Dockerfile for the frontend application
+1. Create a Dockerfile for the frontend application
 
-```bash
-touch apps/frontend/Dockerfile
-```
+    ```bash
+    touch apps/frontend/Dockerfile
+    ```
 
-in the `apps/frontend/Dockerfile`, add the following code
+    In the `apps/frontend/Dockerfile`, add the following code:
 
-```Dockerfile
-# Use the official Node.js image as the base
-FROM node:14
-# Set the working directory inside the container
-WORKDIR /usr/src/app/frontend
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
-# Install dependencies
-RUN npm install --silent
-# Copy the rest of the frontend application code to the container
-COPY . .
-# Expose the port that the frontend application will run on
-EXPOSE 4200
-# Command to start the application
-CMD ["npm", "run", "dev"]
-```
+    ```dockerfile
+    # Use the official Node.js image as the base
+    FROM node:14
 
-2.Create a Dockerfile for the admin application
+    # Set the working directory inside the container
+    WORKDIR /usr/src/app/frontend
 
-```bash
-touch apps/admin/Dockerfile
-```
+    # Copy package.json and package-lock.json to the container
+    COPY package*.json ./
 
-in the `apps/admin/Dockerfile`, add the following code
+    # Install dependencies
+    RUN npm install --silent
 
-```Dockerfile
-# Use the official Node.js image as the base
-FROM node:14
-# Set the working directory inside the container
-WORKDIR /usr/src/app/admin
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
-# Install dependencies
-RUN npm install --silent
-# Copy the rest of the admin application code to the container
-COPY . .
-# Expose the port that the admin application will run on
-EXPOSE 4300
-# Command to start the application
-CMD ["npm", "run", "dev"]
-```
+    # Copy the rest of the frontend application code to the container
+    COPY . .
 
-3.Create a Dockerfile for the backend application
+    # Expose the port that the frontend application will run on
+    EXPOSE 4200
 
-```bash
-touch apps/backend/Dockerfile
-```
+    # Command to start the application
+    CMD ["npm", "run", "dev"]
+    ```
 
-in the `apps/backend/Dockerfile`, add the following code
+2. Create a Dockerfile for the admin application
 
-```Dockerfile
-# Use the official Node.js image as the base
-FROM node:14
-# Set the working directory inside the container
-WORKDIR /usr/src/app/backend
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
-# Install dependencies
-RUN npm install --silent
-# Copy the rest of the backend application code to the container
-COPY . .
-# Expose the port that the backend application will run on
-EXPOSE 3000
-# Command to start the application
-CMD ["npm", "run", "dev"]
-```
+    ```bash
+    touch apps/admin/Dockerfile
+    ```
 
-4.Add `.dockerignore` file to the root of each application
+    In the `apps/admin/Dockerfile`, add the following code:
 
-```dockerignore
-node_modules
-dist
-Dockerfile
-.dockerignore
-.git
-.gitignore
-```
+    ```dockerfile
+    # Use the official Node.js image as the base
+    FROM node:14
 
-5.Add `.gitignore` to the root of each application
+    # Set the working directory inside the container
+    WORKDIR /usr/src/app/admin
 
-```gitignore
-/node_modules
-/dist
-```
+    # Copy package.json and package-lock.json to the container
+    COPY package*.json ./
 
-## Configuring docker-compose.yml
+    # Install dependencies
+    RUN npm install --silent
 
-The general steps to define a docker-compose.yml file for this use case are as follows:
+    # Copy the rest of the admin application code to the container
+    COPY . .
 
-1.Create a `docker-compose.yml` file in the **root of your Nx monorepo**.
-2.Define services for each of your projects: the two front ends, the backend, Redis, and MongoDB.
-3.Set up the build context and Dockerfile for each service.
-4.Define volumes for Redis and MongoDB to persist data.
+    # Expose the port that the admin application will run on
+    EXPOSE 4300
+
+    # Command to start the application
+    CMD ["npm", "run", "dev"]
+    ```
+
+3. Create a Dockerfile for the backend application
+
+    ```bash
+    touch apps/backend/Dockerfile
+    ```
+
+    In the `apps/backend/Dockerfile`, add the following code:
+
+    ```dockerfile
+    # Use the official Node.js image as the base
+    FROM node:14
+
+    # Set the working directory inside the container
+    WORKDIR /usr/src/app/backend
+
+    # Copy package.json and package-lock.json to the container
+    COPY package*.json ./
+
+    # Install dependencies
+    RUN npm install --silent
+
+    # Copy the rest of the backend application code to the container
+    COPY . .
+
+    # Expose the port that the backend application will run on
+    EXPOSE 3000
+
+    # Command to start the application
+    CMD ["npm", "run", "dev"]
+    ```
+
+4. Add `.dockerignore` file to the root of each application
+
+    ```dockerignore
+    node_modules
+    dist
+    Dockerfile
+    .dockerignore
+    .git
+    .gitignore
+    ```
+
+5. Add `.gitignore` to the root of each application
+
+    ```gitignore
+    /node_modules
+    /dist
+    ```
+
+## Configuring `docker-compose.yml`
+
+The general steps to define a `docker-compose.yml` file for this use case are as follows:
+
+1. Create a `docker-compose.yml` file in the **root of your Nx monorepo**.
+2. Define services for each of your projects: the two frontends, the backend, Redis, and MongoDB.
+3. Set up the build context and Dockerfile for each service.
+4. Define volumes for Redis and MongoDB to persist data.
 5. Make sure the services can communicate with each other using their service names as hostnames (containers in the same network can resolve each other's hostnames).
-6. setup bind mounts for each service to enable live reloading. This mounts will persist the changes made in the host machine node_modules & the code to the container.
+6. Set up bind mounts for each service to enable live reloading. This mounts will persist the changes made in the host machine `node_modules` & the code to the container.
 
-Here's a basic example of what your docker-compose.yml might look like:
+Here's a basic example of what your `docker-compose.yml` might look like:
 
 ```yml
 version: '3'
@@ -205,7 +218,7 @@ services:
       - /apps/frontend/node_modules
       - ./:/apps/frontend:ro
     depends_on: 
-        - backend
+      - backend
   
   admin:
     build:
@@ -217,7 +230,7 @@ services:
       - /apps/admin/node_modules
       - ./:/apps/admin:ro
     depends_on: 
-        - backend
+      - backend
   
   backend:
     build:
@@ -226,8 +239,8 @@ services:
     ports:
       - '3000:3000'
     volumes:
-     - /apps/backend/node_modules
-     - ./:/apps/backend:ro
+      - /apps/backend/node_modules
+      - ./:/apps/backend:ro
     environment:
       REDIS_HOST: redis
       MONGO_HOST: mongodb
@@ -235,8 +248,8 @@ services:
       - redis
       - mongodb
     depends_on: 
-        - redis
-        - mongodb
+      - redis
+      - mongodb
 
   redis:
     image: redis
@@ -257,8 +270,8 @@ volumes:
 
 1.Open a terminal in the root of your monorepo.
 2.Run `docker-compose up -d` to build and start your Dockerized services.
-3.Access your front ends at <http://localhost:4200> and <http://localhost:4300>.
-4.Access your backend at <http://localhost:3000>.
+3.Access your front ends at `<http://localhost:4200>` and `<http://localhost:4300>`.
+4.Access your backend at `<http://localhost:3000>`.
 
 ## Local Cleaning Up
 
