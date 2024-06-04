@@ -28,6 +28,9 @@ module.exports = {
         primary: colors.green,
         gray: colors.gray,
       },
+      animation: {
+        'spin-slow': 'spin 50s linear infinite',
+      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {

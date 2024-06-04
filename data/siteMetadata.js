@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'MMH\'s Website',
   author: 'Mohammad Mustakim Hassan',
   headerTitle: 'MMH\'s Website',
-  description: 'Isights, stories, and experiences on awide range of technologies.',
+  description: 'Insights, stories, and experiences on awide range of technologies.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://mmhshayer.github.io',

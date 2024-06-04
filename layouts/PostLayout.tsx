@@ -93,7 +93,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 </ul>
               </dd>
             </dl>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:ml-8 xl:col-span-3 xl:row-span-2 xl:pb-0">
               {/* <div className='py-4'>
                 <dt className="sr-only">Breadcrumbs</dt>
                 <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
