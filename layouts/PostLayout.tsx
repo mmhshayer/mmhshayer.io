@@ -136,11 +136,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </div>
                 )}
                 {(next || prev) && (
-                  <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
+                  <div className="grid grid-cols-2 gap-4 py-4 xl:block xl:space-y-8 xl:pt-8">
                     {prev && prev.path && (
-                      <div>
+                      <div className="cursor-auto hover:text-primary-500 outline-double outline-3 outline-offset-2 p-2 md:p-8 xl:p-2 rounded-lg">
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                          Previous Article
+                          «&nbsp;Previous Article
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                           <Link href={`/${prev.path}`}>{prev.title}</Link>
@@ -148,9 +148,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       </div>
                     )}
                     {next && next.path && (
-                      <div>
+                      <div className="cursor-auto hover:text-primary-500 outline-double outline-3 outline-offset-2 p-2 md:p-8 xl:p-2 rounded-lg block justify-end text-right">
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                          Next Article
+                          Next Article&nbsp;»
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                           <Link href={`/${next.path}`}>{next.title}</Link>

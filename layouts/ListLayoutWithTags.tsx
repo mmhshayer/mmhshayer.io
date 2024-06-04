@@ -30,31 +30,32 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
 
   return (
     <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-      <nav className="flex justify-between">
+      <nav className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {!prevPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Previous
+          <button className="cursor-auto disabled:opacity-50 block justify-end text-left" disabled={!prevPage}>
+            «&nbsp;Previous
           </button>
         )}
         {prevPage && (
           <Link
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
+            className="cursor-auto hover:text-primary-500 outline-double outline-3 outline-offset-2 p-4 rounded-lg block justify-end text-left" 
           >
-            Previous
+            «&nbsp;Previous
           </Link>
         )}
-        <span>
+        <span className='block text-center my-auto'>
           {currentPage} of {totalPages}
         </span>
         {!nextPage && (
-          <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Next
+          <button className="cursor-auto disabled:opacity-50 block justify-end text-right" disabled={!nextPage}>
+            Next&nbsp;»
           </button>
         )}
         {nextPage && (
-          <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
-            Next
+          <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next" className="cursor-auto hover:text-primary-500 outline-double outline-3 outline-offset-2 p-4 rounded-lg block justify-end text-right" >
+            Next&nbsp;»
           </Link>
         )}
       </nav>
@@ -78,22 +79,22 @@ export default function ListLayoutWithTags({
   return (
     <>
       <div>
-        <div className="pb-6 pt-6">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:hidden sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+        <div className="pb-6 pt-6 md:hidden">
+          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 ">
             {title}
           </h1>
         </div>
-        <div className="flex sm:space-x-24">
-          <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-4 lg:grid-cols-3">
+          <div className="hidden h-full max-h-screen col-span-1 overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
             <div className="px-6 py-4">
               {pathname.startsWith('/blog') ? (
-                <h3 className="font-bold uppercase text-primary-500">All Posts</h3>
+                <h3 className="font-bold uppercase text-primary-500">By Tags</h3>
               ) : (
                 <Link
                   href={`/blog`}
                   className="font-bold uppercase text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
                 >
-                  All Posts
+                  By Tags
                 </Link>
               )}
               <ul>
@@ -119,12 +120,12 @@ export default function ListLayoutWithTags({
               </ul>
             </div>
           </div>
-          <div>
+          <div className='w-full md:col-span-3 lg:col-span-2'>
             <ul>
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags } = post
                 return (
-                  <li key={path} className="py-5">
+                  <li key={path} className="py-5 pl-2">
                     <article className="flex flex-col space-y-2 xl:space-y-0">
                       <dl>
                         <dt className="sr-only">Published on</dt>
