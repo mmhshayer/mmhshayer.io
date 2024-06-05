@@ -51,6 +51,12 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                     </time>
                   </dd>
+                  <span className="text-xs font-medium leading-6 text-gray-500 dark:text-gray-400">
+                    <span role="img" aria-label="Clock">
+                      🕒
+                    </span>{' '}
+                    {content.readingTime.text}
+                  </span>
                 </div>
               </dl>
             </div>
