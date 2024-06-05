@@ -18,15 +18,12 @@ export default async function Page() {
             Tags
           </h1>
         </div>
-        <div className="pt-8 md:pt-0 flex max-w-lg flex-wrap gap-2">
+        <div className="flex max-w-lg flex-wrap gap-2 pt-8 md:pt-0">
           {tagKeys.length === 0 && 'No tags found.'}
           {sortedTags.map((t) => {
             return (
-              <div
-                key={t}
-                className=""
-              >
-                <Tag text={t}  count={tagCounts[t]}/>
+              <div key={t} className="">
+                <Tag text={t} count={tagCounts[t]} />
               </div>
             )
           })}
