@@ -99,7 +99,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 </ul>
               </dd>
             </dl>
-            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:ml-8 xl:col-span-3 xl:row-span-2 xl:pb-0">
+            <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:ml-8 xl:pb-0">
               {/* <div className='py-4'>
                 <dt className="sr-only">Breadcrumbs</dt>
                 <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
@@ -144,7 +144,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 {(next || prev) && (
                   <div className="grid grid-cols-2 gap-4 py-4 xl:block xl:space-y-8 xl:pt-8">
                     {prev && prev.path && (
-                      <div className="cursor-auto hover:text-primary-500 outline-double outline-3 outline-offset-2 p-2 md:p-8 xl:p-2 rounded-lg">
+                      <div className="outline-3 cursor-auto rounded-lg p-2 outline-double outline-offset-2 hover:text-primary-500 md:p-8 xl:p-2">
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                           «&nbsp;Previous Article
                         </h2>
@@ -154,7 +154,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       </div>
                     )}
                     {next && next.path && (
-                      <div className="cursor-auto hover:text-primary-500 outline-double outline-3 outline-offset-2 p-2 md:p-8 xl:p-2 rounded-lg block justify-end text-right">
+                      <div className="outline-3 block cursor-auto justify-end rounded-lg p-2 text-right outline-double outline-offset-2 hover:text-primary-500 md:p-8 xl:p-2">
                         <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                           Next Article&nbsp;»
                         </h2>

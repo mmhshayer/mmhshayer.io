@@ -34,7 +34,7 @@ const Monitor = () => (
     viewBox="0 0 20 20"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
+    strokeWidth="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     className="h-6 w-6 text-gray-900 dark:text-gray-100"
@@ -53,24 +53,21 @@ const ThemeSwitch = () => {
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {
-    const initialThemeIndex = THEMES.indexOf(theme || 'system');
-    setThemeIndex(initialThemeIndex !== -1 ? initialThemeIndex : 0);
+    const initialThemeIndex = THEMES.indexOf(theme || 'system')
+    setThemeIndex(initialThemeIndex !== -1 ? initialThemeIndex : 0)
     setMounted(true)
-  }, [])
+  }, [theme])
 
   if (!mounted) return null
 
   const handleClick = () => {
-    const newThemeIndex = (themeIndex + 1) % THEMES.length;
-    setTheme(THEMES[newThemeIndex]);
-    setThemeIndex(newThemeIndex);
+    const newThemeIndex = (themeIndex + 1) % THEMES.length
+    setTheme(THEMES[newThemeIndex])
+    setThemeIndex(newThemeIndex)
   }
 
   return (
-    <button
-      aria-label="Toggle Theme"
-      onClick={handleClick}
-    >
+    <button aria-label="Toggle Theme" onClick={handleClick}>
       {themeIndex === 0 ? <Monitor /> : themeIndex === 1 ? <Moon /> : <Sun />}
     </button>
   )

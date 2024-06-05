@@ -30,9 +30,12 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
 
   return (
     <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-      <nav className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <nav className="grid grid-cols-1 gap-4 md:grid-cols-3">
         {!prevPage && (
-          <button className="cursor-auto disabled:opacity-50 block justify-end text-left" disabled={!prevPage}>
+          <button
+            className="block cursor-auto justify-end text-left disabled:opacity-50"
+            disabled={!prevPage}
+          >
             «&nbsp;Previous
           </button>
         )}
@@ -40,21 +43,28 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
           <Link
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
-            className="cursor-auto hover:text-primary-500 outline-double outline-3 outline-offset-2 p-4 rounded-lg block justify-end text-left" 
+            className="outline-3 block cursor-auto justify-end rounded-lg p-4 text-left outline-double outline-offset-2 hover:text-primary-500"
           >
             «&nbsp;Previous
           </Link>
         )}
-        <span className='block text-center my-auto'>
+        <span className="my-auto block text-center">
           {currentPage} of {totalPages}
         </span>
         {!nextPage && (
-          <button className="cursor-auto disabled:opacity-50 block justify-end text-right" disabled={!nextPage}>
+          <button
+            className="block cursor-auto justify-end text-right disabled:opacity-50"
+            disabled={!nextPage}
+          >
             Next&nbsp;»
           </button>
         )}
         {nextPage && (
-          <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next" className="cursor-auto hover:text-primary-500 outline-double outline-3 outline-offset-2 p-4 rounded-lg block justify-end text-right" >
+          <Link
+            href={`/${basePath}/page/${currentPage + 1}`}
+            rel="next"
+            className="outline-3 block cursor-auto justify-end rounded-lg p-4 text-right outline-double outline-offset-2 hover:text-primary-500"
+          >
             Next&nbsp;»
           </Link>
         )}
@@ -85,7 +95,7 @@ export default function ListLayoutWithTags({
           </h1>
         </div>
         <div className="grid grid-cols-1 gap-2 md:grid-cols-6 lg:grid-cols-3">
-          <div className="hidden h-full max-h-screen col-span-1 md:col-span-2 lg:col-span-1 overflow-auto rounded bg-gray-50 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
+          <div className="col-span-1 hidden h-full max-h-screen overflow-auto rounded bg-gray-50 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex md:col-span-2 lg:col-span-1">
             <div className="px-4 py-8">
               {pathname.startsWith('/blog') ? (
                 <h3 className="font-bold uppercase text-primary-500">By Tags</h3>
@@ -120,7 +130,7 @@ export default function ListLayoutWithTags({
               </ul>
             </div>
           </div>
-          <div className='w-full md:col-span-3 lg:col-span-2'>
+          <div className="w-full md:col-span-3 lg:col-span-2">
             <ul>
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags } = post

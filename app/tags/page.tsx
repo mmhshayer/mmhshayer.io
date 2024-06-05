@@ -18,11 +18,14 @@ export default async function Page() {
             Tags
           </h1>
         </div>
-        <div className="max-w-lg flex flex-wrap">
+        <div className="flex max-w-lg flex-wrap">
           {tagKeys.length === 0 && 'No tags found.'}
           {sortedTags.map((t) => {
             return (
-              <div key={t} className="my-2 mr-3 outline-double outline-3 outline-offset-2 p-4 rounded-lg hover:text-primary-800">
+              <div
+                key={t}
+                className="outline-3 my-2 mr-3 rounded-lg p-4 outline-double outline-offset-2 hover:text-primary-800"
+              >
                 <Tag text={t} />
                 <Link
                   href={`/tags/${slug(t)}`}

@@ -20,7 +20,7 @@ export default function Footer() {
           <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
           <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
         </div>
-        <div className="mb-2 flex flex-col md:flex-row space-x-2 text-sm text-center text-gray-500 dark:text-gray-400">
+        <div className="mb-2 flex flex-col space-x-2 text-center text-sm text-gray-500 dark:text-gray-400 md:flex-row">
           <div>{siteMetadata.author}</div>
           <div>{` • `}</div>
           <div>{`© ${new Date().getFullYear()}`}</div>
