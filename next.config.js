@@ -63,6 +63,7 @@ module.exports = () => {
     reactStrictMode: true,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     basePath: '/mmhshayer.github.io',
+    output: 'export',
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
