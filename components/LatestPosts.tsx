@@ -8,22 +8,33 @@ const MAX_DISPLAY = 5
 const LatestPosts = ({ posts }) => {
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-700">
-      <div className="space-y-2 pb-8 pt-6 md:space-y-5">
+      <div className="space-y-2 pb-4 pt-6 md:space-y-5">
         <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Latest
         </h2>
         <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
           {siteMetadata.description}
         </p>
+        {posts.length > MAX_DISPLAY && (
+          <div className="">
+            <Link
+              href="/blog"
+              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+              aria-label="All posts"
+            >
+              All Posts &rarr;
+            </Link>
+          </div>
+        )}
       </div>
-      <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+      <ul className="py-8 flex flex-wrap gap-2">
         {!posts.length && 'No posts found.'}
         {posts.slice(0, MAX_DISPLAY).map((post) => {
           const { slug, date, title, summary, tags } = post
           return (
-            <li key={slug} className="py-12">
-              <article>
-                <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
+            <li key={slug} className="">
+              <article className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl dark:hover:shadow-gray-700/50 transition-shadow duration-300">
+                <div>
                   <dl>
                     <dt className="sr-only">Published on</dt>
                     <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
@@ -47,18 +58,6 @@ const LatestPosts = ({ posts }) => {
                           ))}
                         </div>
                       </div>
-                      <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                        {summary}
-                      </div>
-                    </div>
-                    <div className="text-base font-medium leading-6">
-                      <Link
-                        href={`/blog/${slug}`}
-                        className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                        aria-label={`Read more: "${title}"`}
-                      >
-                        Read more &rarr;
-                      </Link>
                     </div>
                   </div>
                 </div>
@@ -67,17 +66,6 @@ const LatestPosts = ({ posts }) => {
           )
         })}
       </ul>
-      {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base font-medium leading-6">
-          <Link
-            href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="All posts"
-          >
-            All Posts &rarr;
-          </Link>
-        </div>
-      )}
     </div>
   )
 }
