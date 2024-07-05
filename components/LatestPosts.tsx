@@ -27,13 +27,13 @@ const LatestPosts = ({ posts }) => {
           </div>
         )}
       </div>
-      <ul className="py-8 flex flex-wrap gap-2">
+      <ul className="flex flex-wrap gap-2 py-8">
         {!posts.length && 'No posts found.'}
         {posts.slice(0, MAX_DISPLAY).map((post) => {
           const { slug, date, title, summary, tags } = post
           return (
             <li key={slug} className="">
-              <article className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl dark:hover:shadow-gray-700/50 transition-shadow duration-300">
+              <article className="overflow-hidden rounded-lg border border-gray-200 p-4 transition-shadow duration-300 hover:shadow-xl dark:border-gray-700 dark:hover:shadow-gray-700/50">
                 <div>
                   <dl>
                     <dt className="sr-only">Published on</dt>
@@ -45,10 +45,7 @@ const LatestPosts = ({ posts }) => {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                          <Link
-                            href={`/blog/${slug}`}
-                            className="text-gray-900 dark:text-gray-100"
-                          >
+                          <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
                             {title}
                           </Link>
                         </h2>

@@ -40,12 +40,12 @@ const RandomRectangleCanvas = () => {
   }, [])
 
   return (
-    <div className='border rounded-md border-gray-200 dark:border-gray-700 p-4 flex flex-col'>
-      <div className='border rounded-md border-gray-200 dark:border-gray-700 p-4 mb-4 '>
-        <canvas ref={canvasRef} width={400} height={400} className='mx-auto'></canvas>
+    <div className="flex flex-col rounded-md border border-gray-200 p-4 dark:border-gray-700">
+      <div className="mb-4 rounded-md border border-gray-200 p-4 dark:border-gray-700 ">
+        <canvas ref={canvasRef} width={400} height={400} className="mx-auto"></canvas>
       </div>
       <button
-        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+        className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
         onClick={handleDraw}
       >
         Refresh
